@@ -5,71 +5,82 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="TWEETANNOTATION")
-public class TweetAnnotation implements Serializable{
-	
+@Table(name = "TWEETANNOTATION")
+public class TweetAnnotation implements Serializable {
+
 	private static final long serialVersionUID = -6541003672404717119L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_TWEET_ANNOTATION")
 	private int idTweetAnnotation;
-	
+
+	@OneToOne
+	@JoinColumn(name = "ID_TAG", foreignKey = @ForeignKey(name = "FK_TWEET_ANNOTATION_ID_TAG"))
 	@Column(nullable = false)
-	private int idTweet;
-	
+	private Tag tag;
+
+	@OneToOne
+	@JoinColumn(name = "ID_TWEET", foreignKey = @ForeignKey(name = "FK_TWEET_ANNOTATION_ID_TWEET"))
 	@Column(nullable = false)
-	private int idTag;
-	
+	private Tweet tweet;
+
+	@OneToOne
+	@JoinColumn(name = "ID_USER", foreignKey = @ForeignKey(name = "FK_TWEET_ANNOTATION_ID_USER"))
 	@Column(nullable = false)
-	private int idUser;
-	
-	@Temporal(TemporalType.DATE)//Não precisa por nullable, por quê?
+	private User user;
+
+	@Temporal(TemporalType.DATE)
 	private Date date;
-	
-	public TweetAnnotation(){ }
-	
-	public TweetAnnotation(int idTweetAnnotation, int idTag, int idTweet, int idUser, Date date){
+
+	public TweetAnnotation() {
+	}
+
+	public TweetAnnotation(int idTweetAnnotation, Tag idTag, Tweet idTweet, User idUser, Date date) {
 		this.idTweetAnnotation = idTweetAnnotation;
-		this.idTag = idTag;
-		this.idTweet = idTweet;
-		this.idUser = idUser;
+		this.tag = idTag;
+		this.tweet = idTweet;
+		this.user = idUser;
 		this.date = date;
 	}
-	
+
 	public int getIdTweetAnnotation() {
 		return idTweetAnnotation;
 	}
-	
-	public int getIdTag() {
-		return idTag;
+
+	public Tag getIdTag() {
+		return tag;
 	}
-	
-	public int getIdTweet() {
-		return idTweet;
+
+	public Tweet getIdTweet() {
+		return tweet;
 	}
-	
-	public int getIdUser() {
-		return idUser;
+
+	public User getIdUser() {
+		return user;
 	}
-	
+
 	public Date getDate() {
 		return date;
 	}
-	
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
 	public String toString() {
-		return "\nID TweetAnnotation: " + idTweetAnnotation + "\nID Tweet: " + idTweet
-				+ "\nID Tag: " + idTag + "\nDate: " + date;
+		return "\nID TweetAnnotation: " + idTweetAnnotation + "\nTag: " + tag + "\nTweet: " + tweet + "\nUser: " + user
+				+ "\nDate: " + date;
 	}
 }
