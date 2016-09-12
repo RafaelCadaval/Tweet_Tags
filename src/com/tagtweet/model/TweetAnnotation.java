@@ -28,17 +28,14 @@ public class TweetAnnotation implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name = "ID_TAG", foreignKey = @ForeignKey(name = "FK_TWEET_ANNOTATION_ID_TAG"))
-	@Column(nullable = false)
 	private Tag tag;
 
 	@OneToOne
 	@JoinColumn(name = "ID_TWEET", foreignKey = @ForeignKey(name = "FK_TWEET_ANNOTATION_ID_TWEET"))
-	@Column(nullable = false)
 	private Tweet tweet;
 
 	@OneToOne
 	@JoinColumn(name = "ID_USER", foreignKey = @ForeignKey(name = "FK_TWEET_ANNOTATION_ID_USER"))
-	@Column(nullable = false)
 	private User user;
 
 	@Temporal(TemporalType.DATE)

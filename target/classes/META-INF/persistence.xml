@@ -16,7 +16,7 @@
 			<property name="hibernate.use_sql_comments" value="false"></property>
 			<property name="hibernate.jdbc.wrap_result_sets" value="false"></property>
 			<property name="hibernate.hibernate.cache.use_query_cache" value="true"></property>
-			<property name="hibernate.hbm2ddl.auto" value="update"></property>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"></property>
 			<!-- validate | update | create | create-drop -->
 		</properties>
 	</persistence-unit>
