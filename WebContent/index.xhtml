@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      
+      
+    <h:body>
+ 
+    	<ui:composition template="/template/layout.xhtml">
+ 
+    		<ui:define name="content">
+    			
+    			<h1>CONTEUDO</h1>
+    			
+    			<h:form>
+			    <p:panel id="panel" header="Tweet Tag" style="margin-bottom:10px;">
+			        <p:messages id="messages" />
+			        <h:panelGrid columns="2" cellpadding="5">
+			            <h:outputLabel for="name" value="Tweet:" />
+			            <p:inputTextarea cols="40" rows="5" id="name" required="true" />
+			 
+			            <p:outputLabel for="extended" value="Extended Label:" />
+			            <p:inputText id="extended" required="true" />
+			 
+			            <p:outputLabel for="number" value="Number:" />
+			            <p:spinner id="number" value="0"/>
+			        </h:panelGrid>
+			    </p:panel>
+			 
+			    <p:commandButton value="Submit" update="panel"  />
+			</h:form>
+    			
+  			
+    			    			
+    		</ui:define>
+ 
+    	</ui:composition>
+ 
+    </h:body>
+ 
+</html>
