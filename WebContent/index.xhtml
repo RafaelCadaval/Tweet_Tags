@@ -4,27 +4,30 @@
       xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
        xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-      
-      
+      xmlns:p="http://primefaces.org/ui">
+        
     <h:body>
- 
+ 		
     	<ui:composition template="/template/layout.xhtml">
  
     		<ui:define name="content">
     			
-    			<h1>CONTEUDO</h1>
     			
-    			<h:form>
+    			<f:loadBundle basename="resources.messages" var="msg"/>
+    			<h1><h:outputLabel value="#{msg.titleTweet}"/></h1>
+    			
+    			<h:form prependId="false">
+    			
 			    <p:panel id="panel" header="Tweet Tag" style="margin-bottom:10px;">
-			        <p:messages id="messages" />
+			       
+			       <p:growl id="growl" showDetail="false" sticky="true" />  
+			       
 			        <h:panelGrid columns="2" cellpadding="5">
-			            <h:outputLabel for="name" value="Tweet:" />
+			            <h:outputLabel for="name" value="#{msg.labelTweet}" />
 			            <p:inputTextarea cols="40" rows="5" id="name" required="true" />
 			 
-			            <p:outputLabel for="extended" value="Extended Label:" />
-			            <p:inputText id="extended" required="true" />
+			            <p:outputLabel for="testField" value="#{msg.labelTest}" />
+			            <p:inputText id="testField"  required="true" requiredMessage="#{msg.msgErro}" />
 			 
 			            <p:outputLabel for="number" value="Number:" />
 			            <p:spinner id="number" value="0"/>
